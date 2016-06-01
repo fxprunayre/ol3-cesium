@@ -38,7 +38,7 @@ serve: npm-install cesium/Build/Cesium/Cesium.js
 	node build/serve.js
 
 .PHONY: dist
-dist: dist/ol3cesium.js dist/ol3cesium-debug.js CHANGES.md
+dist: dist/ngeool3cesium.js dist/ngeool3cesium-debug.js CHANGES.md
 	cp CHANGES.md dist/
 
 .PHONY: dist-examples
@@ -62,6 +62,7 @@ check: lint dist .build/geojsonhint.timestamp
 .PHONY: clean
 clean:
 	rm -f dist/ol3cesium.js
+	rm -f dist/ngeool3cesium.js
 	rm -f ol3/build/ol.js
 	rm -f ol3/build/ol-debug.js
 	rm -f ol3/build/ol.css
@@ -98,7 +99,7 @@ cleanall: clean
 	for f in dist/examples/*.html; do $(SEDI) 'sY../ol3/css/ol.cssY../ol.cssY' $$f; done
 	touch $@
 
-dist/ol3cesium-debug.js: build/ol3cesium-debug.json $(SRC_JS_FILES) Cesium.externs.js build/build.js npm-install
+dist/ngeool3cesium-debug.js: build/ngeool3cesium-debug.json $(SRC_JS_FILES) Cesium.externs.js build/build.js npm-install
 	mkdir -p $(dir $@)
 	node build/build.js $< $@
 
@@ -111,11 +112,11 @@ ol3/build/ol.ext/rbush.js: ol3/node_modules/rbush/package.json
 
 
 # A sourcemap is prepared, the source is exected to be deployed in 'source' directory
-dist/ol3cesium.js: build/ngeool3cesium.json $(SRC_JS_FILES) Cesium.externs.js build/build.js npm-install ol3/build/ol.ext/rbush.js
+dist/ngeool3cesium.js: build/ngeool3cesium.json $(SRC_JS_FILES) Cesium.externs.js build/build.js npm-install ol3/build/ol.ext/rbush.js
 	mkdir -p $(dir $@)
 	node build/build.js $< $@
-	$(SEDI) 's!$(shell pwd)/dist!source!g' dist/ol3cesium.js.map
-	$(SEDI) 's!$(shell pwd)!source!g' dist/ol3cesium.js.map
+	$(SEDI) 's!$(shell pwd)/dist!source!g' dist/ngeool3cesium.js.map
+	$(SEDI) 's!$(shell pwd)!source!g' dist/ngeool3cesium.js.map
 #	echo '//# sourceMappingURL=ol3cesium.js.map' >> dist/ol3cesium.js
 #	-ln -s .. dist/source
 

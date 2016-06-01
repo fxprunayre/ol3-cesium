@@ -1,10 +1,10 @@
 {
-  "exports": ["*"],
   "src": [
     "../ngeo/.build/templatecache.js",
     "../ngeo/src/**/*.js",
     "src/**/*.js",
     "ol3/src/**/*.js",
     "ol3/build/ol.ext/*.js"
-  ]
+  ],
+  "exports": ["*"]
 }

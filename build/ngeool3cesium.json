@@ -64,7 +64,7 @@
     "angular_pass": true,
     "export_local_property_definitions": true,
     "use_types_for_optimization": true,
-    "create_source_map": "dist/ol3cesium.js.map",
+    "create_source_map": "dist/ngeool3cesium.js.map",
     "source_map_format": "V3"
   }
 }
